@@ -10,11 +10,11 @@
     - name: Import vprofile-setup variables
       include_vars: vars/vprostacksetup
 
-    - name: 
-        ec2_key:
-          name: vprokey 
-          region: "{{region}}"
-        register: vprokey_out
+    - name: Create Vprofile ec2 key
+      ec2_key:
+        name: vprokey 
+        region: "{{region}}"
+      register: vprokey_out
 
     - name: Save Private key info to loginkey_vpro.pem
       copy:
@@ -22,4 +22,38 @@
         dest: "./loginkey_vpro.pem"
         mode: 0600
       when: vprokey_out.changed
+
+    - name: Create security Group for Load Balancer
+      ec2_group:
+        name: vproELB-sg
+        description: allow port 80 from everywhere and all port within sg 
+        region: "{{region}}"
+        vpc_id: {{"vpcid"}}
+        purge_rules: no
+        rules:
+          - proto: tcp
+            from_port: 80
+            to_port: 80
+            cidr_ip: 0.0.0.0/0
+      register: vproELBSG_out
+
+    - name: Create security Group for Vprofile Stack
+      ec2_group:
+        name: vproStack-sg
+        description: allow port 22 from bastion host and all 80 from load balancer 
+        region: "{{region}}"
+        vpc_id: {{"vpcid"}}
+        purge_rules: no
+        rules:
+          - proto: tcp
+            from_port: 80
+            to_port: 80
+            group_id: "{{vproELBSG_out.group_id}}"
+            
+          - proto: tcp
+            from_port: 22
+            to_port: 22
+            group_id: "{{bastionSGid}}"
+      register: vproStackSG_out
+
 

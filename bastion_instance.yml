@@ -29,6 +29,7 @@
         description: allow port 22 from everywhere and all ports within sg 
         region: "{{region}}"
         vpc_id: "{{vpcid}}"
+        purge_rules: no
         rules:
           - proto: tcp
             from_port: 22
@@ -58,6 +59,14 @@
         group_id: "{{bastionsg_out.group_id}}"
         vpc_subnet_id: "{{pubsub1id}}"
       register: bastionhost_out  
+  
+    - name: Insert/Update "BastionSGid" in vars/output_vars
+      blockinfile:
+        path: vars/output_vars
+        backup: yes
+        block: 
+          BastionSGid: "{{bastionsg_out.group_id}}"
+          region: "{{region}}"
 
 
 
