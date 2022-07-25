@@ -35,7 +35,7 @@
             to_port: 22
             cidr_ip: "{{MYIP}}"
       register: bastionsg_out
-      debug:
+    - debug:
         var: bastionsg_out
     
     - name: Create Bastion host
