@@ -53,7 +53,17 @@
           - proto: tcp
             from_port: 22
             to_port: 22
-            group_id: "{{bastionSGid}}"
+            group_id: "{{BastionSGid}}"
       register: vproStackSG_out
-
+    
+    - name: update security rules with its own id 
+      ec2_group:
+        name: vproStack-sg
+        description: allow port 
+        region: "{{region}}"
+        vpc_id: {{"vpcid"}}
+        purge_rules: no
+        rules:
+          - proto: all
+            group_id: "{{vproStackSG_out.group_id}}"
 
