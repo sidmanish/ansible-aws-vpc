@@ -1,8 +1,6 @@
-nginx_ami: ami-0491345e44132da45
-tomact_ami: ami-0491345e44132da45
-memecache_ami: ami-0491345e44132da45
-rmq_ami: ami-0491345e44132da45
-mysql_ami: ami-0491345e44132da45
+nginx_ami: ami-08d4ac5b634553e16
+tomact_ami: ami-08d4ac5b634553e16
+memecache_ami: ami-08d4ac5b634553e16
+rmq_ami: ami-08d4ac5b634553e16
+mysql_ami: ami-08d4ac5b634553e16
 region: "us-east-1"
-
-
