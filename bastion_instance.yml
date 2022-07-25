@@ -65,7 +65,7 @@
         path: vars/output_vars
         backup: yes
         block: 
-          BastionSGid: {{bastionsg_out.group_id}}
+          BastionSGid: {{ bastionsg_out.group_id }}
     
           
 
