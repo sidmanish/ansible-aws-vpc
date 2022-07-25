@@ -14,8 +14,8 @@
         tenancy: default
         state: "{{state}}"
       register: vpcout
-    - debug:
-        var: vpcout
+    #- debug:
+    #   var: vpcout
 
     - name: Create public subnet1 in zone1
       ec2_vpc_subnet:
@@ -112,4 +112,33 @@
           - dest: 0.0.0.0/0
             gateway_id: "{{igw_out.gateway_id}}"
       register: pubRT_out
+
+    - name: Create new nat gateway and alloacte new EIP if does not exist
+      ec2_vpc_nat_gateway:
+        state: "{{state}}"
+        subnet_id: "{{pubsub1_out.subnet.id}}"
+        wait: yes
+        region: "{{region}}"
+        if_exist_do_not_create: true
+      register: NATGW_out
+    - debug:
+        var: NATGW_out
+
+    - name: Set up private subnet route table
+      ec2_vpc_route_table:
+        vpc_id: "{{vpcout.vpc.id}}"
+        region: "{{region}}"
+        tags:
+          Name: VProfile-PrivRT
+        subnets:
+          - "{{privsub1_out.subnet.id}}"
+          - "{{privsub2_out.subnet.id}}"
+          - "{{privsub3_out.subnet.id}}"
+        routes: 
+          - dest: 0.0.0.0/0
+            gateway_id: "{{NATGW_out.gateway_id}}"
+      register: privRT_out
+    - debug:
+        var: privRT_out
+
 
