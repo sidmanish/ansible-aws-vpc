@@ -121,8 +121,6 @@
         region: "{{region}}"
         if_exist_do_not_create: true
       register: NATGW_out
-    - debug:
-        var: NATGW_out
 
     - name: Set up private subnet route table
       ec2_vpc_route_table:
@@ -138,7 +136,20 @@
           - dest: 0.0.0.0/0
             gateway_id: "{{NATGW_out.nat_gateway_id}}"
       register: privRT_out
+   
     - debug:
-        var: privRT_out
+        var: "{{item}}"
+      loop:
+        - vpcout.vpc.id
+        - pubsub1_out.subnet.id
+        - pubsub2_out.subnet.id
+        - pubsub3_out.subnet.id
+        - privsub1_out.subnet.id
+        - privsub2_out.subnet.id
+        - privsub3_out.subnet.id
+        - igw_out.gateway_id
+        - pubRT_out.route_table.id
+        - NATGW_out.nat_gateway_id
+        - privRT_out.route_table.id
 
 
