@@ -66,7 +66,8 @@
         backup: yes
         block: 
           BastionSGid: "{{bastionsg_out.group_id}}"
-          region: "{{region}}"
+    
+          
 
 
 

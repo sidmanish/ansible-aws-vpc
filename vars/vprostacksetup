@@ -3,6 +3,6 @@ tomact_ami: ami-0491345e44132da45
 memecache_ami: ami-0491345e44132da45
 rmq_ami: ami-0491345e44132da45
 mysql_ami: ami-0491345e44132da45
-
+region: "us-east-1"
 
 
