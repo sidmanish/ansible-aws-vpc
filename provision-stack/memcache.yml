@@ -21,7 +21,7 @@
         - svc
 
     - name: Enable remote login to memecache 
-      lineinlife:
+      lineinfile:
         path: /etc/memcached.conf
         regexp: '^-l '
         line: '-l 0.0.0.0'
