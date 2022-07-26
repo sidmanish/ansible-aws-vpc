@@ -1,3 +1,6 @@
 *.pem
 
 *.cred
+*.sql
+*.ROOT
+*.log
