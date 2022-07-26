@@ -1,0 +1,44 @@
+2022-07-26 10:06:32,543 p=6387 u=ubuntu n=ansible | [WARNING]:  * Failed to parse /home/ubuntu/vpc-stack-vprofile/ansible-aws-vpc/provision-stack/inventory-vpro with yaml plugin: YAML inventory has invalid structure, it
+should be a dictionary, got: <class 'ansible.parsing.yaml.objects.AnsibleUnicode'>
+
+2022-07-26 10:06:32,543 p=6387 u=ubuntu n=ansible | [WARNING]:  * Failed to parse /home/ubuntu/vpc-stack-vprofile/ansible-aws-vpc/provision-stack/inventory-vpro with ini plugin: /home/ubuntu/vpc-stack-vprofile/ansible-aws-
+vpc/provision-stack/inventory-vpro:2: Expected key=value host variable assignment, got: 172.20.4.152
+
+2022-07-26 10:06:32,544 p=6387 u=ubuntu n=ansible | [WARNING]: Unable to parse /home/ubuntu/vpc-stack-vprofile/ansible-aws-vpc/provision-stack/inventory-vpro as an inventory source
+
+2022-07-26 10:06:32,544 p=6387 u=ubuntu n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2022-07-26 10:06:32,548 p=6387 u=ubuntu n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2022-07-26 10:06:32,711 p=6387 u=ubuntu n=ansible | PLAY [set host to ip mapping in /etc/hosts file of all the instances in stack] *********************************************************************************************
+2022-07-26 10:06:32,712 p=6387 u=ubuntu n=ansible | skipping: no hosts matched
+2022-07-26 10:06:32,712 p=6387 u=ubuntu n=ansible | PLAY RECAP *****************************************************************************************************************************************************************
+2022-07-26 10:09:12,698 p=6407 u=ubuntu n=ansible | PLAY [set host to ip mapping in /etc/hosts file of all the instances in stack] *********************************************************************************************
+2022-07-26 10:09:12,711 p=6407 u=ubuntu n=ansible | TASK [Gathering Facts] *****************************************************************************************************************************************************
+2022-07-26 10:09:14,715 p=6407 u=ubuntu n=ansible | ok: [web01]
+2022-07-26 10:09:14,856 p=6407 u=ubuntu n=ansible | ok: [cntl]
+2022-07-26 10:09:15,310 p=6407 u=ubuntu n=ansible | ok: [app01]
+2022-07-26 10:09:15,456 p=6407 u=ubuntu n=ansible | ok: [mc01]
+2022-07-26 10:09:15,602 p=6407 u=ubuntu n=ansible | ok: [rmq01]
+2022-07-26 10:09:17,222 p=6407 u=ubuntu n=ansible | ok: [db01]
+2022-07-26 10:09:17,248 p=6407 u=ubuntu n=ansible | TASK [Import VPC setup variable] *******************************************************************************************************************************************
+2022-07-26 10:09:17,320 p=6407 u=ubuntu n=ansible | ok: [cntl]
+2022-07-26 10:09:17,359 p=6407 u=ubuntu n=ansible | ok: [web01]
+2022-07-26 10:09:17,400 p=6407 u=ubuntu n=ansible | ok: [app01]
+2022-07-26 10:09:17,439 p=6407 u=ubuntu n=ansible | ok: [mc01]
+2022-07-26 10:09:17,450 p=6407 u=ubuntu n=ansible | ok: [rmq01]
+2022-07-26 10:09:17,468 p=6407 u=ubuntu n=ansible | ok: [db01]
+2022-07-26 10:09:17,482 p=6407 u=ubuntu n=ansible | TASK [Update hosts file for all the hosts] *********************************************************************************************************************************
+2022-07-26 10:09:18,391 p=6407 u=ubuntu n=ansible | changed: [mc01]
+2022-07-26 10:09:18,392 p=6407 u=ubuntu n=ansible | changed: [app01]
+2022-07-26 10:09:18,392 p=6407 u=ubuntu n=ansible | changed: [rmq01]
+2022-07-26 10:09:18,393 p=6407 u=ubuntu n=ansible | changed: [web01]
+2022-07-26 10:09:18,462 p=6407 u=ubuntu n=ansible | changed: [cntl]
+2022-07-26 10:09:18,730 p=6407 u=ubuntu n=ansible | changed: [db01]
+2022-07-26 10:09:18,758 p=6407 u=ubuntu n=ansible | PLAY RECAP *****************************************************************************************************************************************************************
+2022-07-26 10:09:18,758 p=6407 u=ubuntu n=ansible | app01                      : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-07-26 10:09:18,758 p=6407 u=ubuntu n=ansible | cntl                       : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-07-26 10:09:18,758 p=6407 u=ubuntu n=ansible | db01                       : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-07-26 10:09:18,758 p=6407 u=ubuntu n=ansible | mc01                       : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-07-26 10:09:18,759 p=6407 u=ubuntu n=ansible | rmq01                      : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-07-26 10:09:18,759 p=6407 u=ubuntu n=ansible | web01                      : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
