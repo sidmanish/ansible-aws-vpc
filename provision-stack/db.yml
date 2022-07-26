@@ -1,8 +1,9 @@
-- name: setup Mysql accounts db and remote login
+---
+- name: Setup Mysql with accounts db and remote login
   hosts: dbservgrp
   gather_facts: no
   tasks:
-    - name: Installing Mysql service and dependencies
+    - name: Installing Mysql Service and dependencies
       package:
         name: "{{item}}"
         state: present
@@ -14,18 +15,17 @@
         - python-mysqldb
         - python3-mysqldb
         - libmysqlclient-dev
-      ignore_error: yes
+      ignore_errors: yes
       tags:
         - package
 
-    - name: start and enable mysql service
+    - name: Start and enable mysql service
       service:
         name: mysql
         state: started
         enabled: yes
       tags:
         - svc
-
 
     - name: creating mysql user
       mysql_user:
@@ -36,7 +36,7 @@
         state: present
 
 
-    - name: creating accounts db
+    - name: Creating accounts DB
       mysql_db:
         name: "{{dbname}}"
         state: present
@@ -50,10 +50,10 @@
       notify:
         - Restart mysql
       tags:
-        - conf 
+        - conf
 
   handlers:
     - name: Restart mysql
-      service:  
+      service:
         name: mysql
         state: restarted
