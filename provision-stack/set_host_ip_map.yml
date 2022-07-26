@@ -1,6 +1,5 @@
 - name: set host to ip mapping in /etc/hosts file of all the instances in stack
   hosts: all
-  become: yes
   tasks:
     - name: Import VPC setup variable
       include_vars: group_vars/hostsip
