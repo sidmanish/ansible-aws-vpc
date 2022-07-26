@@ -199,7 +199,7 @@
             instance_port: 80
 
     
-    - name: Insert/Update Hosts IP & Name in file Provision-stack/group_vars/hostsip
+    - name: Insert/Update Hosts IP & Name in file provision-stack/group_vars/hostsip
       blockinfile:
         path: provision-stack/group_vars/hostsip
         block: |
@@ -219,7 +219,7 @@
 
     - name: Insert/Update Inventory file provision-stack/inventory-vpro
       blockinfile:
-        path: provision_stack/inventory-vpro
+        path: provision_stack/group_vars/inventory-vpro
         block: |
           web01_ansible_host: {{ web01_out.tagged_instances[0].private_ip }}
           app01_ansible_host: {{ app01_out.tagged_instances[0].private_ip }}
