@@ -1,7 +1,7 @@
 ---
 - name: Setup Vprofile Stack
   hosts: localhost
-  #connection: local
+  connection: local
   gather_facts: no 
   tasks:
     - name: Import VPC setup variables
@@ -219,14 +219,14 @@
 
     - name: Insert/Update Inventory file provision-stack/inventory-vpro
       blockinfile:
-        path: provision_stack/group_vars/inventory-vpro
+        path: provision_stack/inventory-vpro
         block: |
-          web01_ansible_host: {{ web01_out.tagged_instances[0].private_ip }}
-          app01_ansible_host: {{ app01_out.tagged_instances[0].private_ip }}
-          mc01_ansible_host: {{ mc01_out.tagged_instances[0].private_ip }}
-          rmq01_ansible_host: {{ rmq01_out.tagged_instances[0].private_ip }}
-          db01_ansible_host: {{ db01_out.tagged_instances[0].private_ip }}
-          cntl ansible_host: 127.0.0.1 ansible_connection=local
+          web01_ansible_host = {{ web01_out.tagged_instances[0].private_ip }}
+          app01_ansible_host = {{ app01_out.tagged_instances[0].private_ip }}
+          mc01_ansible_host = {{ mc01_out.tagged_instances[0].private_ip }}
+          rmq01_ansible_host = {{ rmq01_out.tagged_instances[0].private_ip }}
+          db01_ansible_host = {{ db01_out.tagged_instances[0].private_ip }}
+          cntl ansible_host = 127.0.0.1 ansible_connection=local
 
           [webservgrp]
           web01
